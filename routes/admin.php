@@ -5,6 +5,7 @@ use Whoops\Run;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\LanguagesController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MainCategoriesController;
 use Illuminate\Routing\RouteGroup;
 
 /*
@@ -35,13 +36,24 @@ Route::group(['middleware'=>'auth:admin'], function () {
     Route::post('update/{id}',[ LanguagesController::class, 'update']) -> name('admin.languages.update');
     Route::get('delete/{id}',[ LanguagesController::class, 'delete']) -> name('admin.languages.delete');
 
-        
     });
+    ############# end of languages#######
+
+
+
+    ########### begin of main_categories#####
+    Route::group(['prefix' => 'categories'], function () {
+
+        Route::get('/',[ MainCategoriesController::class, 'getAllCategories'])->name('admin.categories');
+        Route::get('create',[ MainCategoriesController::class, 'create'])->name('admin.categories.create');
+        Route::post('store',[ MainCategoriesController::class, 'store'])->name('admin.categories.store');
+        Route::get('edit/{id}',[ MainCategoriesController::class, 'edit']) -> name('admin.categories.edit');
+        Route::post('update/{id}',[ MainCategoriesController::class, 'update']) -> name('admin.categories.update');
+        Route::get('delete/{id}',[ MainCategoriesController::class, 'delete']) -> name('admin.categories.delete');
+    
+        });
 
 });
-
-
-
 
 
 Route::group([ 'middleware'=>'guest:admin' ], function () {

@@ -31,6 +31,18 @@ class Main_Categorie extends Model
     {
         return $query->where('active','1');
     }
+    
+    public function getActive()
+    {
+        return $this->active ==  1 ? 'مفعل':'غير مفعل';
+
+    }
+    
+    public function scopeSelection($query)
+    {
+
+        return $query->select('id', 'translation_lang', 'name', 'slug', 'photo', 'active', 'translation_of');
+    }
 
      
 }
