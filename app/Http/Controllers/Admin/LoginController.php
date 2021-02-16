@@ -23,7 +23,7 @@ class LoginController extends Controller
     } 
 
     public function  checklogin(LoginRequest $request){
-
+        try{
         $remember_me = $request->has('remember_me') ? true : false;
 
         if (auth::guard('admin')->attempt(['email' => $request->input("email"), 'password' => $request->input("password")], $remember_me)) {
@@ -32,6 +32,10 @@ class LoginController extends Controller
         }
        // notify()->error('خطا في البيانات  برجاء المجاولة مجدا ');
         return redirect()->back()->with(['error' => 'هناك خطا بالبيانات']);
+    } catch(\Exception $ex)
+    {
+        return redirect()->route('get.admin.login');
+    }
     }
 
 

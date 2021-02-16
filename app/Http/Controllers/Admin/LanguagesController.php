@@ -34,7 +34,7 @@ class LanguagesController extends Controller
         }
         catch(\Exception $ex)
         {
-            return redirect()->route('admin.languages')->with(['error'=>'errore']);
+            return redirect()->route('admin.languages')->with(['errors'=>'errore']);
         }
 
     }

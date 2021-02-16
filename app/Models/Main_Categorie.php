@@ -43,6 +43,16 @@ class Main_Categorie extends Model
 
         return $query->select('id', 'translation_lang', 'name', 'slug', 'photo', 'active', 'translation_of');
     }
+    public function getPhotoAttribute($val) // to add the url of local host to photo url
+    {
+        return ($val !== null) ? asset('' . $val) : "";
+
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(self::class,'translation_of');
+    }
 
      
 }

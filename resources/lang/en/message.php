@@ -3,6 +3,7 @@
 return [
     'en'=>'in english',
     'ar'=>'in arabic',
+    'fre'=>'in french',
  
 
 ];

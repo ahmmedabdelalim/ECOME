@@ -50,7 +50,7 @@
                                         <div class="form-group">
                                             <label> صوره القسم </label>
                                             <label id="projectinput7" class="file center-block">
-                                                <input type="file" id="file" name="photo">
+                                                <input type="file" id="photo" name="photo">
                                                 <span class="file-custom"></span>
                                             </label>
                                             @error('photo')
@@ -77,10 +77,10 @@
                                                      </div>
                                                 </div>
 
-                                                <div class="col-md-6">
+                                                <div class="col-md-6" hidden>
                                                     <div class="form-group">
                                                         <label for="projectinput1"> أختصار اللغة {{__('message.'.$lang -> abbr)}}</label>
-                                                        <input type="text" value="" id="name"
+                                                        <input type="text" value="{{$lang->abbr}}" id="name"
                                                                class="form-control"
                                                                placeholder="ادخل أختصار اللغة  "
                                                                name="categorie[{{$index}}][abbr]">

@@ -25,7 +25,7 @@ class MainCategoriesrequest extends FormRequest
     {
         return [
              
-            'photo'=> 'reuired|string|mimes:jpg,jpeg,png',
+            // 'photo'=> 'reuired|string|mimes:jpg,jpeg,png',
             
             'categorie' => 'required|array|min:1',
             'categorie.*.name' => 'required',
@@ -34,7 +34,7 @@ class MainCategoriesrequest extends FormRequest
     }
     public function messsage()
     {
-        return['required' => 'هذا الحقل مطلوب',];
+        
     }
 
      
