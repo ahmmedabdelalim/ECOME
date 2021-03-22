@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\LanguagesController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MainCategoriesController;
+use App\Http\Controllers\Admin\VendorsController;
+
 use Illuminate\Routing\RouteGroup;
 
 /*
@@ -53,8 +55,23 @@ Route::group(['middleware'=>'auth:admin'], function () {
     
         });
 
+            ########### begin of vendors #####
+    Route::group(['prefix' => 'vendors'], function () {
+
+        Route::get('/',[ VendorsController::class, 'index'])->name('admin.vendors');
+        Route::get('create',[ VendorsController::class, 'create'])->name('admin.vendors.create');
+        Route::post('store',[ VendorsController::class, 'store'])->name('admin.vendors.store');
+        Route::get('edit/{id}',[ VendorsController::class, 'edit']) -> name('admin.vendors.edit');
+        Route::post('update/{id}',[ VendorsController::class, 'update']) -> name('admin.vendors.update');
+        Route::get('delete/{id}',[ VendorsController::class, 'delete']) -> name('admin.vendors.delete');
+    
+        });
+
+
 });
 
+
+###########################################
 
 Route::group([ 'middleware'=>'guest:admin' ], function () {
     
