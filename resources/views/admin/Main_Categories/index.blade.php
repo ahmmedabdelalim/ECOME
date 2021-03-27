@@ -63,7 +63,7 @@
                                                         <td>{{get_default_lang()}}</td>
                                                         <td>{{$category -> getActive()}}</td>
                                                         <td> <img style="width: 150px; height: 100px;" src="{{$category ->photo}}"></td>
-                                                        <td>
+                                                         <td>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic example">
                                                                 <a href="{{route('admin.categories.edit',$category->id)}}"

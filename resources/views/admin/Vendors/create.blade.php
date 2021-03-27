@@ -47,16 +47,16 @@
                                           enctype="multipart/form-data">
                                           @csrf
 
-                                          <div class="form-group">
-                                            <label> لوجو التجار </label>
+                                         <div class="form-group">
+                                            <label> صوره القسم </label>
                                             <label id="projectinput7" class="file center-block">
-                                                <input type="file" id="file" name="logo">
+                                                <input type="file" id="photo" name="logo">
                                                 <span class="file-custom"></span>
                                             </label>
                                             @error('logo')
                                             <span class="text-danger">{{$message}}</span>
                                             @enderror
-                                        </div>
+                                         </div>
 
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="ft-home"></i> بيانات  المتجر </h4>
@@ -175,6 +175,8 @@
                                             </div>
 
                                         </div>
+
+                                         
 
                                         <div id="map" style="height:500px ; width:1000px"></div> 
 

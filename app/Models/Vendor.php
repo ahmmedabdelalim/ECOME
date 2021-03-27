@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use PhpParser\Node\Expr\FuncCall;
+use Illuminate\Notifications\Notifiable;
 
 class Vendor extends Model
 {
     use HasFactory;
+    use Notifiable;
 
     protected $table = 'vendors';
 
@@ -22,12 +24,13 @@ class Vendor extends Model
         'updated_at',
         'category_id',
         'active',
-        'logo'
+        'logo',
+        'password',
     ];
 
     
     protected $timestamp = ['created_at','updated_at'];
-    protected $hiddden = ['category_id'];
+    protected $hiddden = ['category_id','password',];
 
 
     public function scopeActive($query)
@@ -50,11 +53,22 @@ class Vendor extends Model
     public function scopeSelection($query)
     {
 
-        return $query->select('id', 'category_id', 'active', 'name', 'logo', 'mobile');
+        return $query->select('id', 'category_id','address','email', 'active', 'name', 'logo', 'mobile','password');
     }
 
     public function category()
     {
         return $this->belongsTo(Main_Categorie::class,'category_id','id');
+    }
+
+    // encrypt the password 
+
+    public function setPasswordAttribute($password)
+    {
+        if(!empty($password))
+        {
+            $this->attributes['password']= bcrypt($password);
+        }
+
     }
 }

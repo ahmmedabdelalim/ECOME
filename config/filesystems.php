@@ -47,9 +47,9 @@ return [
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],
-        'vendors' => [
+        'Vendors' => [
             'driver' => 'local',
-            'root' => base_path(). '/assets/images/vendors/',
+            'root' => base_path(). '/assets/images/Vendors/',
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],
