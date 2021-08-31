@@ -20,13 +20,17 @@ class RouteServiceProvider extends ServiceProvider
     public const HOME = '/';
     public const ADMIN = '/admin';
 
+    public const USERHOME = '/user/user';
+    public const USER = '/user';
+
+
     /**
      * The controller namespace for the application.
      *
      * When present, controller route declarations will automatically be prefixed with this namespace.
      *
      * @var string|null
-     */ 
+     */
     // protected $namespace = 'App\\Http\\Controllers';
 
     /**
@@ -35,7 +39,7 @@ class RouteServiceProvider extends ServiceProvider
      * @return void
      */
 
-    
+
 
     public function boot()
     {
@@ -55,6 +59,11 @@ class RouteServiceProvider extends ServiceProvider
                 ->middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/admin.php'));
+
+                Route::prefix('user')
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/user.php'));
         });
     }
 

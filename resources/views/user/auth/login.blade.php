@@ -13,14 +13,14 @@
                             </div>
                         </div>
                         <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
-                            <span>  لوحه تسجيل الادمن     </span>
+                            <span>      لوحه دخول المستخدم </span>
                         </h6>
                     </div>
                     @include('admin.includes.alerts.errors')
                     @include('admin.includes.alerts.success')
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form-horizontal form-simple" action="{{route('admin.login')}}" method="post"
+                            <form class="form-horizontal form-simple" action="{{route('user.login')}}" method="post"
                                   novalidate>
                                 @csrf
                                 <fieldset class="form-group position-relative has-icon-left mb-0">

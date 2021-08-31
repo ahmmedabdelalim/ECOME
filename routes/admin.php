@@ -52,7 +52,7 @@ Route::group(['middleware'=>'auth:admin'], function () {
         Route::get('edit/{id}',[ MainCategoriesController::class, 'edit']) -> name('admin.categories.edit');
         Route::post('update/{id}',[ MainCategoriesController::class, 'update']) -> name('admin.categories.update');
         Route::get('delete/{id}',[ MainCategoriesController::class, 'delete']) -> name('admin.categories.delete');
-    
+
         });
 
             ########### begin of vendors #####
@@ -64,7 +64,7 @@ Route::group(['middleware'=>'auth:admin'], function () {
         Route::get('edit/{id}',[ VendorsController::class, 'edit']) -> name('admin.vendors.edit');
         Route::post('update/{id}',[ VendorsController::class, 'update']) -> name('admin.vendors.update');
         Route::get('delete/{id}',[ VendorsController::class, 'delete']) -> name('admin.vendors.delete');
-    
+
         });
 
 
@@ -74,7 +74,7 @@ Route::group(['middleware'=>'auth:admin'], function () {
 ###########################################
 
 Route::group([ 'middleware'=>'guest:admin' ], function () {
-    
+
     Route::get('login',[ LoginController::class, 'getlogin'])->name('get.admin.login');
     Route::post('checklogin',[ LoginController::class, 'checklogin'])->name('admin.login');
     Route::post('logout', [ LoginController::class, 'logout'])->name('admin.logout');

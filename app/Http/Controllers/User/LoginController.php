@@ -1,34 +1,36 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\JsonResponse;
-use Session;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
-
-
 
 class LoginController extends Controller
 {
+    //
     use AuthenticatesUsers;
-    public function  getLogin(){
 
-        return view('admin.Auth.login');
+    public function  getlogin(){
+
+        return view('user.Auth.login');
     }
+
+    public function index()
+    {
+        return view('user.dashboard');
+    }
+
 
     public function  checklogin(LoginRequest $request){
         try{
         $remember_me = $request->has('remember_me') ? true : false;
 
-        if (auth::guard('admin')->attempt(['email' => $request->input("email"), 'password' => $request->input("password")], $remember_me)) {
+        if (auth::guard('user')->attempt(['email' => $request->input("email"), 'password' => $request->input("password")], $remember_me)) {
            // notify()->success('تم الدخول بنجاح  ');
-            return redirect() -> route('admin.dashboard');
+            return redirect() -> route('user.dashboard');
         }
        // notify()->error('خطا في البيانات  برجاء المجاولة مجدا ');
         return redirect()->back()->with(['error' => 'هناك خطا بالبيانات']);
@@ -37,15 +39,4 @@ class LoginController extends Controller
         return redirect()->route('get.admin.login');
     }
     }
-
-
-    public function logout(Request $request)
-{
-    if(Auth::guard('admin')->check()) // this means that the admin was logged in.
-    {
-         Auth::guard('admin')->logout();
-         return redirect()->route('get.admin.login');
-    }
-}
-
 }
